@@ -1,73 +1,105 @@
-# React + TypeScript + Vite
+# 🛸 Rick & Morty Universe
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web interactiva desarrollada con **React + TypeScript + Vite** que permite explorar el universo de la serie Rick & Morty consumiendo su [API pública](https://rickandmortyapi.com).
 
-Currently, two official plugins are available:
+Proyecto desarrollado como **Actividad de Aprendizaje 1** de la asignatura *Diseño de Interfaces* — 2º DAM, curso 2025-2026, Centro San Valero.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🚀 Tecnologías utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [React 18](https://react.dev/) — Librería de interfaces de usuario
+- [TypeScript](https://www.typescriptlang.org/) — Tipado estático
+- [Vite](https://vitejs.dev/) — Bundler y servidor de desarrollo
+- [React Router DOM](https://reactrouter.com/) — Navegación y rutas dinámicas
+- [Rick & Morty API](https://rickandmortyapi.com/) — Fuente de datos
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ✨ Funcionalidades
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- 👤 **Personajes** — Listado con búsqueda por nombre, filtrado por estado (Vivo/Muerto/Desconocido) y ordenación A-Z / Z-A
+- 📄 **Detalle de personaje** — Vista individual con imagen, estado, especie, origen y ubicación (`/character/:id`)
+- 🌍 **Ubicaciones** — Listado con búsqueda, filtrado por tipo y ordenación
+- 📺 **Episodios** — Listado con búsqueda, filtrado por temporada y ordenación
+- 🌙 **Tema oscuro/claro** — Toggle con persistencia en `localStorage`
+- ⏳ **Estados de carga y error** — Manejo completo en cada llamada a la API
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🗂️ Estructura del proyecto
+
+```
+src/
+├── components/
+│   ├── CharacterCard.tsx   # Tarjeta visual de cada personaje
+│   ├── Footer.tsx          # Pie de página
+│   ├── Header.tsx          # Cabecera con título
+│   ├── InfoRow.tsx         # Fila etiqueta-valor en vista detalle
+│   ├── Navigation.tsx      # Barra de navegación sticky
+│   ├── SearchBar.tsx       # Búsqueda, filtro y ordenación
+│   ├── StatusMessage.tsx   # Mensajes de carga, error y vacío
+│   └── ThemeToggle.tsx     # Botón de cambio de tema
+├── pages/
+│   ├── HomePage.tsx
+│   ├── CharactersPage.tsx
+│   ├── CharacterDetailPage.tsx
+│   ├── LocationsPage.tsx
+│   └── EpisodesPage.tsx
+├── utils/
+│   └── api.ts              # Funciones de acceso a la API
+├── types/
+│   └── index.ts            # Tipos TypeScript del proyecto
+├── App.tsx                 # Rutas y estructura general
+├── main.tsx                # Punto de entrada
+└── index.css               # Variables CSS y estilos globales
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ⚙️ Instalación y uso
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Clona el repositorio
+git clone https://github.com/MarcosMartinezVijuesca/AA1-DI.git
+
+# Entra en la carpeta
+cd AA1-DI
+
+# Instala las dependencias
+npm install
+
+# Arranca el servidor de desarrollo
+npm run dev
 ```
+
+La aplicación estará disponible en `http://localhost:5173`
+
+---
+
+## 🌿 Metodología Git
+
+El proyecto utiliza **Gitflow** como metodología de control de versiones:
+
+- `main` — Versión estable de producción (release 1.0.0)
+- `develop` — Rama de integración de funcionalidades
+- `feature/setup-estructura` — Rama donde se desarrolló toda la aplicación
+
+---
+
+## 📁 Endpoints consumidos
+
+| Endpoint | Descripción |
+|----------|-------------|
+| `/character` | Listado de personajes |
+| `/character/:id` | Detalle de un personaje |
+| `/location` | Listado de ubicaciones |
+| `/episode` | Listado de episodios |
+
+---
+
+## 👤 Autor
+
+**Marcos Martínez Vijuesca**  
+2º DAM — Diseño de Interfaces  
+Centro San Valero, Zaragoza · Curso 2025-2026
